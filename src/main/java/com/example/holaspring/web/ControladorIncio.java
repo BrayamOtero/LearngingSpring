@@ -42,8 +42,8 @@ public class ControladorIncio {
         model.addAttribute("persona", persona);
         return "modificar";
     }
-
-    @GetMapping("/eliminar/{idPersona}")
+    //Como metemos el parametro idPersona por el query parameter, no es necesario definirlo acá
+    @GetMapping("/eliminar")
     public String eliminar(Persona persona){
         personaService.eliminar(persona);
         return "redirect:/";
