@@ -17,15 +17,21 @@
         <br/>
         <label for="nombre">nombre</label>
         <input type="text" name="nombre" th:field="*{nombre}"/>
+        <!--con esto: #fields.hasErrors('nombre')  verificamos si hay problemas con el campo nombre, por ejemplo si esta vacio
+        ya que es un resctriccion-->
+        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
         <br>
         <label  for="apellido">apellido</label>
         <input type="text" name="apellido" th:field="*{apellido}"/>
+        <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error apellido</span>
         <br>
         <label for="email">email</label>
-        <input type="email" name="email" th:field="*{email}"/>
+        <input type="text" name="email" th:field="*{email}"/>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error email</span>
         <br>
         <label for="telefono">telefono</label>
         <input type="tel" name="telefono" th:field="*{telefono}"/>
+        <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error telefono</span>
         <br>
         <input type="submit" name="guardar" value="Guardar"/>
     </form>

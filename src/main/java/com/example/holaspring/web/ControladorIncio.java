@@ -5,8 +5,11 @@ import com.example.holaspring.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -29,8 +32,13 @@ public class ControladorIncio {
     }
 
     //Este metodo tambien actualiza si el idPersona es diferente de null
+    //@Valid sirve para que valide el objeto persona y Errors es para saber si tiene errores
     @PostMapping("/guardar")
-    public String guardar(Persona persona){
+    public String guardar(@Valid Persona persona, Errors errors){
+        if(errors.hasErrors()){
+            //con esto se despliega los errores en el formulario
+            return "modificar";
+        }
         personaService.guardar(persona);
         return "redirect:/";
     }
