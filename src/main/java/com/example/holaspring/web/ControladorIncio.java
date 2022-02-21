@@ -42,4 +42,10 @@ public class ControladorIncio {
         model.addAttribute("persona", persona);
         return "modificar";
     }
+
+    @GetMapping("/eliminar/{idPersona}")
+    public String eliminar(Persona persona){
+        personaService.eliminar(persona);
+        return "redirect:/";
+    }
 }

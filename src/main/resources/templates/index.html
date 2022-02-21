@@ -27,6 +27,7 @@
                 <td th:text="${persona.telefono}">Nombre</td>
                 <!--Se concatena el id del objeto persona -->
                 <td><a th:href="@{/editar/} + ${persona.idPersona}" th:text="Editar"></a></td>
+                <td><a th:href="@{/eliminar/} + ${persona.idPersona}" th:text="Eliminar"></a></td>
             </tr>
 
         </table>
