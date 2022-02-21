@@ -9,12 +9,14 @@
     <a th:href="@{/agregar}">Crear Persona</a>
     <br>
     <div th:if="${personas != null and !personas.empty}">
-        <table>
+        <table border="1">
             <tr>
                 <th>Nombre </th>
                 <th>Apellido </th>
                 <th>Email </th>
                 <th>Telefono </th>
+                <th>Editar </th>
+                <th>Eliminar </th>
             </tr>
 
 
@@ -23,6 +25,8 @@
                 <td th:text="${persona.apellido}">Nombre</td>
                 <td th:text="${persona.email }">Nombre</td>
                 <td th:text="${persona.telefono}">Nombre</td>
+                <!--Se concatena el id del objeto persona -->
+                <td><a th:href="@{/editar/} + ${persona.idPersona}" th:text="Editar"></a></td>
             </tr>
 
         </table>

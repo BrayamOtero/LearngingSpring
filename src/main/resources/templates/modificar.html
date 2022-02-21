@@ -11,6 +11,10 @@
   <a th:href="@{/}">Regresar</a>
   <br>
     <form th:action="@{/guardar}"  method="post" th:object="${persona}">
+        <!-- Es necesario colocar este campo para determinar si se va actualizar o crear un
+        nuevo dato, por medio del idPersona-->
+        <input type="hidden" name="idPersona" th:field="*{idPersona}">
+        <br/>
         <label for="nombre">nombre</label>
         <input type="text" name="nombre" th:field="*{nombre}"/>
         <br>

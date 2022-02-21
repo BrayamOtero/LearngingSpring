@@ -28,9 +28,18 @@ public class ControladorIncio {
         return "modificar";
     }
 
+    //Este metodo tambien actualiza si el idPersona es diferente de null
     @PostMapping("/guardar")
     public String guardar(Persona persona){
         personaService.guardar(persona);
         return "redirect:/";
+    }
+
+    @GetMapping("/editar/{idPersona}")
+    public String editar(Persona persona, Model model){
+        //No es necesario set el idPersona del path variable porque Spring lo hace automaticamente.
+        persona = personaService.encontarPersona(persona);
+        model.addAttribute("persona", persona);
+        return "modificar";
     }
 }
