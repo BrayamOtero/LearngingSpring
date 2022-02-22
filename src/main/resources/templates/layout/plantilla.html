@@ -10,7 +10,12 @@
     </header>
 
     <footer th:fragment="footer">
-        <p> [[#{platilla.pie-pagina}]] por Brayam Otero</p>
+        <div>
+            <br>
+            <a th:href="@{/(lang=es)}">ES</a> |
+            <a th:href="@{/(lang=en)}">EN</a> |
+        </div>
+        <span> [[#{platilla.pie-pagina}]] por Brayam Otero</span>
     </footer>
 </body>
 </html>
