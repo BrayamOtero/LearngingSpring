@@ -3,6 +3,8 @@ package com.example.holaspring.web;
 import com.example.holaspring.domain.Persona;
 import com.example.holaspring.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -18,10 +20,11 @@ public class ControladorIncio {
     public PersonaService personaService;
 
     @GetMapping("/")
-    public String inicio(Model model){
+    public String inicio(Model model, @AuthenticationPrincipal User user){
 
         Iterable<Persona> personas = personaService.listarPersonas();
         model.addAttribute("personas", personas);
+        System.out.println("Usuario qeu hizo login" + user);
         return "index";
     }
 
