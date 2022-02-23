@@ -2,6 +2,7 @@ package com.example.holaspring.web;
 
 import com.example.holaspring.domain.Persona;
 import com.example.holaspring.service.PersonaService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
+@Slf4j
 public class ControladorIncio {
     @Autowired
     public PersonaService personaService;
@@ -22,9 +25,15 @@ public class ControladorIncio {
     @GetMapping("/")
     public String inicio(Model model, @AuthenticationPrincipal User user){
 
-        Iterable<Persona> personas = personaService.listarPersonas();
+        List<Persona> personas = personaService.listarPersonas();
         model.addAttribute("personas", personas);
-        System.out.println("Usuario qeu hizo login" + user);
+        log.info("Usuario que hizo login" + user);
+        double saldoTotal = 0D;
+        for(Persona p : personas){
+            saldoTotal += p.getSaldo();
+        }
+        model.addAttribute("saldoTotal", saldoTotal);
+        model.addAttribute("totalClientes", personas.size());
         return "index";
     }
 
