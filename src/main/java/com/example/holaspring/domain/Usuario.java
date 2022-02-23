@@ -1,16 +1,15 @@
 package com.example.holaspring.domain;
 
-import lombok.Data;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "usuario")
-public class Usuario implements Serializable {
+@Table(name="usuario")
+public class Usuario implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -24,6 +23,6 @@ public class Usuario implements Serializable {
     private String password;
 
     @OneToMany
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name="id_usuario")
     private List<Rol> roles;
 }
