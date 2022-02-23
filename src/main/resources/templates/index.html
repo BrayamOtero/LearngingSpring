@@ -9,40 +9,8 @@
     <header th:replace="layout/plantilla :: header" />
     <section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
 <!--    <section th:replace="layout/agregarCliente :: agregarCliente"></section>-->
-<!--    <section th:replace="layout/listadoClientes :: listadoClientes"></section>-->
+    <section th:replace="layout/listadoClientes :: listadoClientes"></section>
 
     <footer th:replace="layout/plantilla :: footer" />
-    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>
-    <br>
-    <div th:if="${personas != null and !personas.empty}">
-        <table border="1">
-            <tr>
-                <th>Nombre </th>
-                <th>Apellido </th>
-                <th>Email </th>
-                <th>Telefono </th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')">Editar </th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar </th>
-            </tr>
-
-
-            <tr th:each="persona: ${personas} ">
-                <td th:text="${persona.nombre}">Nombre</td>
-                <td th:text="${persona.apellido}">Nombre</td>
-                <td th:text="${persona.email }">Nombre</td>
-                <td th:text="${persona.telefono}">Nombre</td>
-                <!--Se concatena el id del objeto persona utilizando path variable-->
-                <td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/editar/} + ${persona.idPersona}" th:text="Editar"></a></td>
-                <!--Se concatena el id del objeto persona utilizando query parameter-->
-                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/eliminar(idPersona=${persona.idPersona})}" th:text="Eliminar"></a></td>
-            </tr>
-
-        </table>
-    </div>
-    <div th:if="${personas == null and personas.empty}">
-        La lista de personas esta vacia
-    </div>
-
-
 </body>
 </html>
