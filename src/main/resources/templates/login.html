@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmls="http://www.w3.org/1998/xhtml"
       lang="en">
-<head>
+<head th:replace="layout/plantilla :: head">
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
@@ -11,10 +11,13 @@
 
     <form method="POST" th:action="@{/login}">
         <label for="username">Username:</label>
+        <br>
         <input type="text" name="username" id="username">
+        <br>
         <label for="password">Password:</label>
+        <br>
         <input type="password" name="password" id="password">
-
+        <br>
         <input type="submit" value="Login">
     </form>
 </body>
