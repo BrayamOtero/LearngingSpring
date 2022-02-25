@@ -1,41 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmls="http://www.w3.org/1998/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
-<head>
+<head th:replace="layout/plantilla :: head">
     <meta charset="UTF-8">
     <title>Datos de la Persona</title>
 </head>
 <body>
     <header th:replace="layout/plantilla :: header" />
-  <h2>Datos de la Persona</h2>
-  <a th:href="@{/}">Regresar</a>
-  <br>
-    <form th:action="@{/guardar}"  method="post" th:object="${persona}">
-        <!-- Es necesario colocar este campo para determinar si se va actualizar o crear un
-        nuevo dato, por medio del idPersona-->
-        <input type="hidden" name="idPersona" th:field="*{idPersona}">
-        <br/>
-        <label for="nombre">nombre</label>
-        <input type="text" name="nombre" th:field="*{nombre}"/>
-        <!--con esto: #fields.hasErrors('nombre')  verificamos si hay problemas con el campo nombre, por ejemplo si esta vacio
-        ya que es un resctriccion-->
-        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
-        <br>
-        <label  for="apellido">apellido</label>
-        <input type="text" name="apellido" th:field="*{apellido}"/>
-        <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error apellido</span>
-        <br>
-        <label for="email">email</label>
-        <input type="text" name="email" th:field="*{email}"/>
-        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error email</span>
-        <br>
-        <label for="telefono">telefono</label>
-        <input type="tel" name="telefono" th:field="*{telefono}"/>
-        <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error telefono</span>
-        <br>
-        <input type="submit" name="guardar" value="Guardar"/>
-    </form>
+    <section th:replace="layout/editarCliente :: editarCliente"></section>
     <footer th:replace="layout/plantilla :: footer" />
+
 </body>
 </html>
